@@ -43,7 +43,6 @@
             <td>{{ $person->city }}</td>
             <td>{{ $person->uf }}</td>
             <td><a href="{{ route('person.update', ['id' => $person->person_id]) }}" class="btn btn-primary">Editar</a></td>
-            <td><a href="{{ route('person.update', ['id' => $person->person_id]) }}" class="btn btn-danger">Excluir</a></td>
           </tr>
         @endforeach
       </tbody>
@@ -79,7 +78,6 @@
             <td>{{ $person->city }}</td>
             <td>{{ $person->uf }}</td>
             <td><a href="{{ route('person.update', ['id' => $person->person_id]) }}" class="btn btn-primary">Editar</a></td>
-            <td><a href="{{ route('person.update', ['id' => $person->person_id]) }}" class="btn btn-danger">Excluir</a></td>
           </tr>
         @endforeach
       </tbody>
