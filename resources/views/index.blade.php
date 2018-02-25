@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Lista de pessoas')
+@section('title', 'Listagem')
 
 @section('content')
   <div id="people-type-selector-div">

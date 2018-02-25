@@ -84,8 +84,9 @@ class PersonApiController extends Controller
      */
     public function update(Request $request): JsonResponse
     {
-        if (($validate = $this->validatePersonFromRquest($request)) instanceof JsonResponse) {
-            return $validate;
+        if (is_array(($validate = app('App\Services\PersonRequestValidatorService')
+            ->validate($request)))) {
+            return response()->json($validate);
         }
 
         $data = $request->all();

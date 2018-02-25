@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Cadastrar pessoa')
+@section('title', 'Cadastrar')
 
 @section('content')
   <div id="create-person">
@@ -222,60 +222,60 @@
       });
 
       document.getElementById('create').onclick = e => {
-      e.preventDefault();
+        e.preventDefault();
 
-      let personData = {person_type: document.getElementById('person-type').value};
+        let personData = {person_type: document.getElementById('person-type').value};
 
-      if (personType === 'fisical') {
-        personData.name = document.getElementById('name').value;
-        personData.last_name = document.getElementById('last_name').value;
-        personData.birthday = document.getElementById('birthday').value;
-        personData.cpf = removeMarks(document.getElementById('cpf').value);
-      } else if (personType === 'legal') {
-        personData.social_reason = document.getElementById('social_reason').value;
-        personData.fantasy_name = document.getElementById('fantasy_name').value;
-        personData.cnpj = removeMarks(document.getElementById('cnpj').value);
-      }
+        if (personType === 'fisical') {
+          personData.name = document.getElementById('name').value;
+          personData.last_name = document.getElementById('last_name').value;
+          personData.birthday = document.getElementById('birthday').value;
+          personData.cpf = removeMarks(document.getElementById('cpf').value);
+        } else if (personType === 'legal') {
+          personData.social_reason = document.getElementById('social_reason').value;
+          personData.fantasy_name = document.getElementById('fantasy_name').value;
+          personData.cnpj = removeMarks(document.getElementById('cnpj').value);
+        }
 
-      personData.cep = removeMarks(document.getElementById('cep').value);
-      personData.address = document.getElementById('address').value;
-      personData.number = document.getElementById('number').value;
-      personData.complement = document.getElementById('complement').value;
-      personData.district = document.getElementById('district').value;
-      personData.city = document.getElementById('city').value;
-      personData.uf = document.getElementById('uf').value;
+        personData.cep = removeMarks(document.getElementById('cep').value);
+        personData.address = document.getElementById('address').value;
+        personData.number = document.getElementById('number').value;
+        personData.complement = document.getElementById('complement').value;
+        personData.district = document.getElementById('district').value;
+        personData.city = document.getElementById('city').value;
+        personData.uf = document.getElementById('uf').value;
 
-      let headers = new Headers({
-        'X-CSRF-TOKEN': document
-        .querySelector('meta[name="csrf-token"]')
-        .getAttribute('content'),
-        'Content-Type': 'application/json'
-      });
+        let headers = new Headers({
+          'X-CSRF-TOKEN': document
+          .querySelector('meta[name="csrf-token"]')
+          .getAttribute('content'),
+          'Content-Type': 'application/json'
+        });
 
-      let opts = {
-        method: 'PUT',
-        body: JSON.stringify(personData),
-        headers
-      };
+        let opts = {
+          method: 'PUT',
+          body: JSON.stringify(personData),
+          headers
+        };
 
-      fetch('{{ route('person.api.create') }}', opts)
-        .then(res => res.json())
-        .then(res => {
-          if (res.success) {
-            document.getElementById('messages').innerHTML = `
-            <div class="alert alert-success" role="alert">
-              Salvo com sucesso!
-            </div>
-            `;
-          } else {
-            document.getElementById('messages').innerHTML = `
-            <div class="alert alert-danger" role="alert">
-              ${res.message}
-            </div>
-            `;
-          }
-        })
-        .catch(e => console.log(e));
+        fetch('{{ route('person.api.create') }}', opts)
+          .then(res => res.json())
+          .then(res => {
+            if (res.success) {
+              document.getElementById('messages').innerHTML = `
+              <div class="alert alert-success" role="alert">
+                Salvo com sucesso!
+              </div>
+              `;
+            } else {
+              document.getElementById('messages').innerHTML = `
+              <div class="alert alert-danger" role="alert">
+                ${res.message}
+              </div>
+              `;
+            }
+          })
+          .catch(e => console.log(e));
       }
     };
   </script>

@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Editar pessoa')
+@section('title', 'Editar')
 
 @section('content')
     <div id="person-data">
@@ -200,7 +200,7 @@
           req.birthday = document.getElementById('birthday').value;
           req.cpf = removeMarks(document.getElementById('cpf').value);
         @elseif ($person_type === 'legal')
-          req.social_name = document.getElementById('social_name').value;
+          req.social_reason = document.getElementById('social_reason').value;
           req.fantasy_name = document.getElementById('fantasy_name').value;
           req.cnpj = removeMarks(document.getElementById('cnpj').value);
         @endif
