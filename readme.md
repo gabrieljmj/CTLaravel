@@ -15,9 +15,12 @@ Não foi utilizado pois acredito que as coisas simples que foram feitas na aplic
 ## API
 Todo a aplicação roda em cima de uma API própria para requisições via JavaScript.
 
-| Tipo | URI |
-|:----|:---|
-|Todos|```/api/person/get```|
-|Por ID|```/api/person/get/{ID}```|
-|Pessoas físicas|```/api/person/get/fisical```|
-|Pessoas jurídicas|```/api/person/get/legal```|
+| Tipo | URI | Método |
+|:----|:---|:---------|
+|Todos|```/api/person/get```| GET |
+|Por ID|```/api/person/get/{ID}```| GET |
+|Pessoas físicas|```/api/person/get/fisical```| GET |
+|Pessoas jurídicas|```/api/person/get/legal```| GET |
+|Cadastrar|```/api/person/create```| PUT |
+|Editar|```/api/person/update```| POST |
+|Excluir|```/api/person/delete```| DELETE |
