@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLegalPersons extends Migration
+class CreateFisicalPeopleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateLegalPersons extends Migration
      */
     public function up()
     {
-        Schema::create('legal_people', function (Blueprint $table) {
-            $table->integer('cnpj', 11);
-            $table->string('social_reason');
-            $table->string('fantasy_name');
+        Schema::create('fisical_people', function (Blueprint $table) {
+            $table->integer('cpf', 11);
+            $table->string('name');
+            $table->string('last_name', 15);
+            $table->datetime('birthday');
             $table->string('cep', 8);
             $table->string('address');
             $table->integer('number');
@@ -39,6 +40,6 @@ class CreateLegalPersons extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('legal_people');
+        Schema::dropIfExists('fisical_people');
     }
 }
